@@ -2,14 +2,21 @@ name: test
 on:
   push:
   pull_request:
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.14']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: ${{ matrix.python-version }}
       - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
       - run: ffmpeg -hide_banner -version | head -1
       - run: python -m venv .venv && .venv/bin/pip install -r requirements.txt

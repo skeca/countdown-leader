@@ -16,7 +16,7 @@ There are three styles:
 - **simple** is black except for the single “2” frame and its pop.
 - **tail** goes at the end of the edit, with the pop 2 seconds after the last frame.
 
-Filenames follow the pattern `{style}_{raster}_{rate}.mov`, for example `smpte_uhd-scope_2397.mov`.
+Filenames follow the pattern `{style}_{raster}_{rate}.mov`, for example `smpte_uhd-scope_2397.mov`. The rate tags are `2397`, `24` and `25`.
 
 | Raster | Size | Picture |
 |---|---|---|
@@ -50,4 +50,4 @@ To build a release zip, run `./package.sh 1.0.0`. The script also checks the fil
 
 ## License
 
-The code is licensed under MIT. The Big Shoulders Display and Inter fonts are licensed under SIL OFL 1.1 (see `fonts/OFL.txt`). You can use the leaders however you like, with no credit required.
+The code and documentation are licensed under [MIT](LICENSE). The Big Shoulders Display and Inter fonts are licensed separately under [SIL OFL 1.1](fonts/OFL.txt). You can use the leaders however you like, with no credit required.
