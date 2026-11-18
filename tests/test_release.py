@@ -114,6 +114,11 @@ class ReleaseTests(unittest.TestCase):
             bad = inspect_media(untagged, style='tail', fps_label_value='2397', size=(320, 180))
             self.assertTrue(any('colr' in e for e in bad['errors']))
 
+    def test_readme_download_table_is_current(self):
+        r = subprocess.run(['.venv/bin/python', 'docs/download_table.py', '--check'],
+                           capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr)
+
     def test_make_matrix_matches_validator(self):
         targets = subprocess.check_output(['make', '--no-print-directory', '-s', 'list'], text=True).splitlines()
         self.assertEqual(set(targets), {'out/' + name for name in matrix()})
